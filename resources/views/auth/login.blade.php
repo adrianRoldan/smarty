@@ -36,7 +36,7 @@
 <!-- Main navbar -->
 <div class="navbar navbar-inverse bg-indigo">
     <div class="navbar-header">
-        <a class="navbar-brand" href="index.html"><img src="assets/images/logo_light.png" alt=""></a>
+        <a class="navbar-brand" href="{{ route("/") }}"><img src="assets/images/logo_light.png" alt=""></a>
 
         <ul class="nav navbar-nav pull-right visible-xs-block">
             <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
@@ -114,12 +114,15 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn bg-pink-400 btn-block">Entra <i class="icon-circle-right2 position-right"></i></button>
+                            <button type="submit" class="btn bg-pink-400 btn-block">Iniciar Sesión <i class="icon-circle-right2 position-right"></i></button>
                         </div>
 
                         <div class="text-center">
                             <a href="{{ route('password.request') }}">Has olvidado la contraseña?</a>
                         </div>
+
+                        <div class="content-divider text-muted form-group"><span>No tienes una cuenta?</span></div>
+                        <a href="{{ route('register') }}" class="btn btn-default btn-block content-group">Regístrate</a>
                     </div>
                 </form>
                 <!-- /simple login form -->
@@ -127,7 +130,7 @@
 
                 <!-- Footer -->
                 <div class="footer text-muted text-center">
-                    &copy; {{ date('Y') }}. <a href="#">SMARTY</a> by <a href="#" target="_blank">PTIN 2017</a>
+                    &copy; {{ date('Y') }}. <a href="#">{{ config('app.name') }}</a> by <a href="#" target="_blank">PTIN 2017</a>
                 </div>
                 <!-- /footer -->
 

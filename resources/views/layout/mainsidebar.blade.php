@@ -7,7 +7,7 @@
             <div class="category-content">
                 <div class="sidebar-user-material-content">
                     <a href="#"><img src="assets/images/placeholder.jpg" class="img-circle img-responsive" alt=""></a>
-                    <h6>Admin</h6>
+                    <h6>{{ auth()->user()->name }}</h6>
                     <span class="text-size-small">Vilanova, BCN</span>
                 </div>
 
@@ -22,7 +22,15 @@
                     <li><a href="#"><i class="icon-comment-discussion"></i> <span><span class="badge bg-teal-400 pull-right">0</span> Mensajes</span></a></li>
                     <li class="divider"></li>
                     <li><a href="#"><i class="icon-cog5"></i> <span>Configuración</span></a></li>
-                    <li><a href="#"><i class="icon-switch2"></i> <span>Salir</span></a></li>
+                    <li>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                            <i class="icon-switch2"></i>
+                            <span>Salir</span>
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
