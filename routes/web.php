@@ -11,10 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+Route::get('/', "DashboardController@index");
+Route::get('/dashboard', "DashboardController@index");
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/login2', function () {
+    return view('auth.login3');
+});
