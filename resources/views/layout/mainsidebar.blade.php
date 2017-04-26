@@ -45,7 +45,10 @@
                     <!-- Main -->
                     <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
                     <li class="active"><a href="{{ url("/") }}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
-
+                    <li class="navigation-header"><span>Servicios</span> <i class="icon-menu" title="Servicios"></i></li>
+                    <li class="active"><a href="{{ url("/") }}"><i class=""></i> <span>Tráfico</span></a></li>
+                    <li class="active"><a href="{{ url("/") }}"><i class=""></i> <span>Energia</span></a></li>
+                    <li class="active"><a href="{{ url("/") }}"><i class=""></i> <span></span></a></li>
                 </ul>
             </div>
         </div>

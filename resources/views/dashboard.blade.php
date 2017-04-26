@@ -14,7 +14,7 @@
 
             <!--<div class="heading-elements">
                 <div class="heading-btn-group">
-                    <a href="#" class="btn btn-link btn-float text-size-small has-text"><i class="icon-bars-alt text-primary"></i><span>Statistics</span></a>
+                    <a href="#" class="btn btn-link btn-flácoat text-size-small has-text"><i class="icon-bars-alt text-primary"></i><span>Statistics</span></a>
                     <a href="#" class="btn btn-link btn-float text-size-small has-text"><i class="icon-calculator text-primary"></i> <span>Invoices</span></a>
                     <a href="#" class="btn btn-link btn-float text-size-small has-text"><i class="icon-calendar5 text-primary"></i> <span>Schedule</span></a>
                 </div>
@@ -59,13 +59,13 @@
 
                 <div class="panel panel-flat">
                     <div class="panel-heading">
-                        <h6 class="panel-title">Panel principal</h6>
+                        <h6 class="panel-title">Semáforo (C/ Fleming - C/ Aigua)</h6>
                         <div class="heading-elements">
                             <form class="heading-form" action="#">
                                 <div class="form-group">
                                     <label class="checkbox-inline checkbox-switchery checkbox-right switchery-xs">
                                         <input type="checkbox" class="switch" checked="checked">
-                                        Live update:
+                                        Activo
                                     </label>
                                 </div>
                             </form>
@@ -81,13 +81,101 @@
             <div class="col-lg-5">
                 <div class="panel panel-flat">
                     <div class="panel-heading">
-                        <h6 class="panel-title">Más contenido</h6>
+                        <h6 class="panel-title">Semáforo (C/ St. Jordi - C/ Fleming)</h6>
                         <div class="heading-elements">
                             <form class="heading-form" action="#">
                                 <div class="form-group">
                                     <label class="checkbox-inline checkbox-switchery checkbox-right switchery-xs">
                                         <input type="checkbox" class="switch" checked="checked">
-                                        Live update:
+                                        Activo
+                                    </label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+
+                <div class="panel panel-flat">
+                    <div class="panel-heading">
+                        <h6 class="panel-title">Semáforo (Rbla Pau - C/ Sitges)</h6>
+                        <div class="heading-elements">
+                            <form class="heading-form" action="#">
+                                <div class="form-group">
+                                    <label class="checkbox-inline checkbox-switchery checkbox-right switchery-xs">
+                                        <input type="checkbox" class="switch" checked="checked">
+                                        Activo
+                                    </label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="panel panel-flat">
+                    <div class="panel-heading">
+                        <h6 class="panel-title">Semáforo (C/ Rbla Sama - C/ Francesc Macia)</h6>
+                        <div class="heading-elements">
+                            <form class="heading-form" action="#">
+                                <div class="form-group">
+                                    <label class="checkbox-inline checkbox-switchery checkbox-right switchery-xs">
+                                        <input type="checkbox" class="switch" checked="checked">
+                                        Activo
+                                    </label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+
+                <div class="panel panel-flat">
+                    <div class="panel-heading">
+                        <h6 class="panel-title">Semáforo (C/ Josep Mascaro - C/ Geltrú)</h6>
+                        <div class="heading-elements">
+                            <form class="heading-form" action="#">
+                                <div class="form-group">
+                                    <label class="checkbox-inline checkbox-switchery checkbox-right switchery-xs">
+                                        <input type="checkbox" class="switch" checked="checked">
+                                        Activo
+                                    </label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="panel panel-flat">
+                    <div class="panel-heading">
+                        <h6 class="panel-title">Semáforo (C/ Zamenhof - C/ Ventosa)</h6>
+                        <div class="heading-elements">
+                            <form class="heading-form" action="#">
+                                <div class="form-group">
+                                    <label class="checkbox-inline checkbox-switchery checkbox-right switchery-xs">
+                                        <input type="checkbox" class="switch">
+                                        Activo
                                     </label>
                                 </div>
                             </form>
