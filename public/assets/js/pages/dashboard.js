@@ -59,7 +59,7 @@ $(function() {
     // Traffic sources stream chart
     // ------------------------------
 
-    trafficSources('#traffic-sources', 330); // initialize chart
+    //trafficSources('#traffic-sources', 330); // initialize chart
 
     // Chart setup
     function trafficSources(element, height) {

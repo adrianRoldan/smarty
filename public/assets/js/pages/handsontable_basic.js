@@ -83,7 +83,7 @@ $(function() {
     var hot_headers_init = new Handsontable(hot_headers, {
         data: car_data,
         rowHeaders: true,
-        colHeaders: ['Brand', 'Model', 'Year', 'Color', 'Price'],
+        colHeaders: ['Brand', 'Models', 'Year', 'Color', 'Price'],
         stretchH: 'all'
     });
 

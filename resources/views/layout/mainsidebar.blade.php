@@ -6,7 +6,7 @@
         <div class="sidebar-user-material">
             <div class="category-content">
                 <div class="sidebar-user-material-content">
-                    <a href="#"><img src="assets/images/placeholder.jpg" class="img-circle img-responsive" alt=""></a>
+                    <a href="#"><img src="img/logo_smarty.png" class="img-circle img-responsive" alt=""></a>
                     <h6>{{ auth()->user()->name }}</h6>
                     <span class="text-size-small">Vilanova, BCN</span>
                 </div>
@@ -45,7 +45,11 @@
                     <!-- Main -->
                     <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
                     <li class="active"><a href="{{ url("/") }}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
-
+                    <li class="active"><a href="{{ url("/cloud") }}"><i class="icon-cloud-check"></i> <span>Sync Cloud</span></a></li>
+                    <li class="navigation-header"><span>Servicios</span> <i class="icon-menu" title="Servicios"></i></li>
+                    <li class="active"><a href="{{ url("/") }}"><i class=""></i> <span>Tráfico</span></a></li>
+                    <li class="active"><a href="{{ url("/") }}"><i class=""></i> <span>Energia</span></a></li>
+                    <li class="active"><a href="{{ url("/") }}"><i class=""></i> <span></span></a></li>
                 </ul>
             </div>
         </div>

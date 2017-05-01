@@ -96,7 +96,7 @@ $(function() {
     var hot_date_init = new Handsontable(hot_date, {
         data: hot_date_data,
         stretchH: 'all',
-        colHeaders: ['Car', 'Model', 'Date', 'Price (€)', 'Market share'],
+        colHeaders: ['Car', 'Models', 'Date', 'Price (€)', 'Market share'],
         columns: [
             {
                 data: 'car'
