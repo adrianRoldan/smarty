@@ -40,7 +40,7 @@ $(function() {
     var hot_search_basic_init = new Handsontable(hot_search_basic, {
         data: car_data,
         stretchH: 'all',
-        colHeaders: ['Brand', 'Model', 'Date', 'Price', 'Market share'],
+        colHeaders: ['Brand', 'Models', 'Date', 'Price', 'Market share'],
         search: true,
         columns: [
             {
@@ -95,7 +95,7 @@ $(function() {
     // Initialize with options
     var hot_search_class_init = new Handsontable(hot_search_class, {
         data: car_data,
-        colHeaders: ['Brand', 'Model', 'Date', 'Price', 'Market share'],
+        colHeaders: ['Brand', 'Models', 'Date', 'Price', 'Market share'],
         stretchH: 'all',
         search: {
             searchResultClass: 'bg-blue'
@@ -148,7 +148,7 @@ $(function() {
     // Initialize with options
     var hot_search_query_init = new Handsontable(hot_search_query, {
         data: car_data,
-        colHeaders: ['Brand', 'Model', 'Date', 'Price', 'Market share'],
+        colHeaders: ['Brand', 'Models', 'Date', 'Price', 'Market share'],
         stretchH: 'all',
         search: {
             queryMethod: onlyExactMatch
@@ -206,7 +206,7 @@ $(function() {
     // Initialize with options
     var hot_search_callback_init = new Handsontable(hot_search_callback, {
         data: car_data,
-        colHeaders: ['Brand', 'Model', 'Date', 'Price', 'Market share'],
+        colHeaders: ['Brand', 'Models', 'Date', 'Price', 'Market share'],
         stretchH: 'all',
         search: {
             callback: searchResultCounter

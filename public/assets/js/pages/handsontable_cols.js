@@ -100,7 +100,7 @@ $(function() {
     var hot_moving_init = new Handsontable(hot_moving, {
         data: car_data,
         rowHeaders: true,
-        colHeaders: ['Brand', 'Model', 'Year', 'Color', 'Price'],
+        colHeaders: ['Brand', 'Models', 'Year', 'Color', 'Price'],
         stretchH: 'all',
         manualColumnMove: true,
         manualRowMove: true
@@ -119,7 +119,7 @@ $(function() {
         data: car_data,
         colWidths: [150, 150, 100, 120],
         rowHeaders: true,
-        colHeaders: ['Brand', 'Model', 'Year', 'Color', 'Price'],
+        colHeaders: ['Brand', 'Models', 'Year', 'Color', 'Price'],
         stretchH: 'last'
     });
 
@@ -135,7 +135,7 @@ $(function() {
     var hot_resize_init = new Handsontable(hot_resize, {
         data: car_data,
         rowHeaders: true,
-        colHeaders: ['Brand', 'Model', 'Year', 'Color', 'Price'],
+        colHeaders: ['Brand', 'Models', 'Year', 'Color', 'Price'],
         stretchH: 'all',
         colWidths: [55, 80, 80, 80, 80, 80, 80],
         rowHeights: [50, 40, 100],

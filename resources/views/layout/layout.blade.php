@@ -19,7 +19,7 @@
                 <!-- Main content -->
                 <div class="content-wrapper">
 
-                    @yield('header')
+                    @include('layout.header')
                     @yield('content')
                 </div>
                 <!-- /main content -->
@@ -29,6 +29,6 @@
 
         </div>
         <!-- /page container -->
-
+        @yield('scripts')
     </body>
 </html>

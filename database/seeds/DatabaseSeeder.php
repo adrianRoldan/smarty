@@ -14,10 +14,11 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
 
-        User::create([
+        $this->call(ProjectsSeeder::class);
+        /*User::create([
             'name' => 'admin',
             'email' => "adrian.roldan.90@gmail.com",
             'password' => bcrypt("secreto")
-        ]);
+        ]);*/
     }
 }
