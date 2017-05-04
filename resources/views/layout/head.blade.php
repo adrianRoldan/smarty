@@ -11,6 +11,7 @@
 <link href="assets/css/core.css" rel="stylesheet" type="text/css">
 <link href="assets/css/components.css" rel="stylesheet" type="text/css">
 <link href="assets/css/colors.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/g/sweetalert2@6.6.2(sweetalert2.min.css+sweetalert2.css)">
 <!-- /global stylesheets -->
 
 <!-- Core JS files -->
@@ -19,6 +20,7 @@
 <script type="text/javascript" src="assets/js/core/libraries/bootstrap.min.js"></script>
 <script type="text/javascript" src="assets/js/plugins/loaders/blockui.min.js"></script>
 <script type="text/javascript" src="js/ajaxSetup.js"></script>
+<script src="https://cdn.jsdelivr.net/g/sweetalert2@6.6.2(sweetalert2.min.js+sweetalert2.js)"></script>
 <!-- /core JS files -->
 
 <!-- Theme JS files -->

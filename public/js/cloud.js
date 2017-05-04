@@ -12,7 +12,17 @@ $(document).ready(function(){
             url: "/cloud/sendtocloud",
             type: "POST",
             success: function (result) {
-                alert(result);
+                swal({
+                    title: 'Bien Hecho!',
+                    text: 'Se ha enviado la información correctamente.',
+                    type: "success",
+                    timer: 2000
+                }).then(
+                    function () {},
+                    // handling the promise rejection
+                    function (dismiss) {
+                    }
+                )
             }
         });
     }
