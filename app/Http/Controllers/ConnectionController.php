@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Socket\ClientSocket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
+use phpMQTT;
+
 
 class ConnectionController extends Controller
 {
@@ -25,6 +27,10 @@ class ConnectionController extends Controller
         return view('cloud');
     }
 
+    public function broker() {
+        return view('gestor');
+    }
+
 
     public function sendToCloud(Request $request){
 
@@ -35,4 +41,17 @@ class ConnectionController extends Controller
 
         echo $response;
     }
+
+    public function sendToMosquitto(Request $request){
+
+        $mqtt = new phpMQTT("192.168.1.46", 1883, "phpMQTT Pub Example"); //Change client name to something unique
+
+        if ($mqtt->connect()) {
+            $mqtt->publish("bluerhinos/phpMQTT/examples/publishtest","Hello World! at ".date("r"),0);
+            $mqtt->close();
+        }
+        echo "alo";
+    }
+
+
 }
