@@ -13,23 +13,30 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        User::create([
+            'name' => 'admin',
+            'email' => 'admin@smarty.com',
+            'password' => bcrypt('123456')
+        ]);
 
         Dispositivo::create([
             'ip' => '',
             'mac' => '',
+            'puerto' => 10000,
             'nombre' => "Cloud",
         ]);
 
         Dispositivo::create([
             'ip' => '',
             'mac' => '',
+            'puerto' => 10000,
             'nombre' => "Gestor 1",
         ]);
 
         Dispositivo::create([
             'ip' => '',
             'mac' => '',
+            'puerto' => 10000,
             'nombre' => "Gestor 2",
         ]);
     }

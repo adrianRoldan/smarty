@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Socket\ClientSocket;
+use App\CommunicationLog;
+use App\Http\Sockets\ClientSocket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
@@ -22,7 +23,8 @@ class ConnectionController extends Controller
 
     public function cloud(){
 
-        return view('cloud');
+        $logs = CommunicationLog::orderBy("created_at", "desc")->orderBy("fechaEnvio", "desc")->get();
+        return view('cloud', compact('logs'));
     }
 
 

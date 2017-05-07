@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Socket;
+namespace App\Http\Sockets;
 
 class ClientSocket
 {

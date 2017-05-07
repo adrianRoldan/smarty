@@ -15,13 +15,16 @@ class CreateDispositivosTable extends Migration
     {
         Schema::create('dispositivos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('ip');
-            $table->string('mac');
             $table->string('nombre');
+            $table->ipAddress('ip');
+            $table->integer("puerto");
+            $table->string('mac');
             $table->string('tipo')->default('');
+            $table->boolean("estado")->default(true);
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

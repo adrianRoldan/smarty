@@ -1,10 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Support\Facades\Schema;
 
-class CreateProjectsTable extends Migration
+class CreateNodosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateProjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('projects', function(Blueprint $table)
-        {
+        Schema::create('nodos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->default('');
+            $table->string("nombre");
+            $table->string("tipo");
+            $table->ipAddress("ip");
+            $table->integer("puerto");
+            $table->boolean("estado")->default(true);
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateProjectsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('projects');
+        Schema::dropIfExists('nodos');
     }
 }

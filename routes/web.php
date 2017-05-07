@@ -18,6 +18,8 @@ Route::get('/cloud', "ConnectionController@cloud");
 Route::post('/cloud/sendtocloud', "ConnectionController@sendToCloud");
 Route::get('/cloud/sendtocloud', "ConnectionController@sendToCloud");
 
+Route::get('/dispositivo/get/{dispositivo}', "DispositivoController@get");
+
 Auth::routes();
 
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');

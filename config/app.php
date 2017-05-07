@@ -64,7 +64,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Europe/Madrid',
 
     /*
     |--------------------------------------------------------------------------
@@ -184,7 +184,7 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-
+        Orchid\Socket\Providers\SocketServiceProvider::class
     ],
 
     /*
