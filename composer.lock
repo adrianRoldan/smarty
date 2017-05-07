@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "da3a27cd67a440f5f0f695f47319eb96",
+=======
+    "content-hash": "13ec5b2061cca86de59b8ef7583772db",
+>>>>>>> 343bf2c5d4027673c755ede87aebd2d9d475a6c1
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -61,6 +65,7 @@
             "time": "2017-01-19T08:19:49+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "cboden/ratchet",
             "version": "v0.3.6",
             "source": {
@@ -107,6 +112,34 @@
                 "sockets"
             ],
             "time": "2017-01-06T14:36:36+00:00"
+=======
+            "name": "bluerhinos/phpmqtt",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bluerhinos/phpMQTT.git",
+                "reference": "9a481b9e7c812c585be63cc88870b93ef04118ef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bluerhinos/phpMQTT/zipball/9a481b9e7c812c585be63cc88870b93ef04118ef",
+                "reference": "9a481b9e7c812c585be63cc88870b93ef04118ef",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Andrew Milsted",
+                    "email": "andrew@bluerhinos.co.uk"
+                }
+            ],
+            "description": "Simple MQTT Class",
+            "time": "2015-06-25 13:16:59"
+>>>>>>> 343bf2c5d4027673c755ede87aebd2d9d475a6c1
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -4165,7 +4198,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "bluerhinos/phpmqtt": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
