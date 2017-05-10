@@ -37,7 +37,7 @@ class ConnectionController extends Controller
     public function sendToCloud(Request $request){
 
         $socket = new ClientSocket(Config::get("adresses.cloud.ip"), Config::get("adresses.cloud.port"));
-        $socket->send_data('Hello World');
+        $socket->send_data('Hola cloud, soy el front-end');
         $response = $socket->read_data();
         $socket->close_socket();
 

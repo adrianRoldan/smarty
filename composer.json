@@ -12,11 +12,8 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.3.0",
         "mcfish/libmqtt": "^0.3.0",
-<<<<<<< HEAD
         "orchid/socket": "^1.5",
         "predis/predis": "^1.1",
-=======
->>>>>>> 343bf2c5d4027673c755ede87aebd2d9d475a6c1
         "rap2hpoutre/laravel-log-viewer": "^0.10.0"
     },
     "require-dev": {
