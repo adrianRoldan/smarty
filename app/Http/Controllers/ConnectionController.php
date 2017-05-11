@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\CommunicationLog;
+use App\Components\phpMQTT;
 use App\Http\Sockets\ClientSocket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
-use phpMQTT;
 
 
 class ConnectionController extends Controller
@@ -44,16 +44,36 @@ class ConnectionController extends Controller
         echo $response;
     }
 
-    public function sendToMosquitto(Request $request){
+    public function sendToMosquitto(){
 
-        $mqtt = new phpMQTT("192.168.1.46", 1883, "phpMQTT Pub Example"); //Change client name to something unique
+        $mqtt = new phpMQTT("192.168.1.49", 1883, "front-end"); //Change client name to something unique
+        $mqtt->keepalive = 60;
 
         if ($mqtt->connect()) {
-            $mqtt->publish("bluerhinos/phpMQTT/examples/publishtest","Hello World! at ".date("r"),0);
+            $mqtt->publish("trafico/emergencia", "Hello World!!!!!!",0);
             $mqtt->close();
+        }else{
+            logger("Error con la conexión con Mosquitto. Publicador");
         }
-        echo "alo";
     }
 
 
+    public function bindMosquitto(){
+
+        $mqtt = new phpMQTT("192.168.1.49", 1883, "front-end"); //Change client name to something unique
+        if(!$mqtt->connect()){
+            logger("Error con la conexión con Mosquitto. Suscriptor");
+            exit(1);
+        }
+        $topics['trafico/emergencia'] = array("qos"=>0, "function"=>"procmsg");
+        $mqtt->subscribe($topics,0);
+
+        while($mqtt->proc()){}
+
+        $mqtt->close();
+    }
+
+    function procmsg($topic, $msg){
+        logger( "Msg Recieved: ".date("r")."\nTopic:{$topic}\n$msg\n");
+    }
 }

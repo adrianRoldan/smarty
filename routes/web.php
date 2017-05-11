@@ -14,6 +14,11 @@
 Route::get('/', "DashboardController@index")->name("/");
 Route::get('/dashboard', "DashboardController@index");
 
+
+Route::get("/bindMosquitto", "ConnectionController@bindMosquitto");
+
+
+
 Route::get('/cloud', "ConnectionController@cloud");
 Route::post('/cloud/sendtocloud', "ConnectionController@sendToCloud");
 Route::get('/cloud/sendtocloud', "ConnectionController@sendToCloud");
