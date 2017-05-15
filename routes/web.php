@@ -33,3 +33,6 @@ Route::get('/broker', "ConnectionController@broker");
 Route::post('/broker/sendtomosquitto', "ConnectionController@sendToMosquitto");
 Route::get('/broker/sendtomosquitto', "ConnectionController@sendToMosquitto");
 
+Route::get('/broker', "ConnectionController@broker");
+Route::post('/broker/bindmosquitto', "ConnectionController@bindMosquitto");
+Route::get('/broker/bindmosquitto', "ConnectionController@bindMosquitto");

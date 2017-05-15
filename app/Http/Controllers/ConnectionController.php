@@ -46,11 +46,11 @@ class ConnectionController extends Controller
 
     public function sendToMosquitto(){
 
-        $mqtt = new phpMQTT("192.168.1.49", 1883, "front-end"); //Change client name to something unique
+        $mqtt = new phpMQTT("192.168.1.50", 1883, "front-end"); //Change client name to something unique
         $mqtt->keepalive = 60;
 
         if ($mqtt->connect()) {
-            $mqtt->publish("trafico/emergencia", "Hello World!!!!!!",0);
+            $mqtt->publish("casa/importante", "Hello World!!!!!!",0);
             $mqtt->close();
         }else{
             logger("Error con la conexión con Mosquitto. Publicador");
@@ -60,12 +60,12 @@ class ConnectionController extends Controller
 
     public function bindMosquitto(){
 
-        $mqtt = new phpMQTT("192.168.1.49", 1883, "front-end"); //Change client name to something unique
+        $mqtt = new phpMQTT("192.168.1.50", 1883, "front-end"); //Change client name to something unique
         if(!$mqtt->connect()){
             logger("Error con la conexión con Mosquitto. Suscriptor");
             exit(1);
         }
-        $topics['trafico/emergencia'] = array("qos"=>0, "function"=>"procmsg");
+        $topics['casa/importante'] = array("qos"=>0, "function"=>"procmsg");
         $mqtt->subscribe($topics,0);
 
         while($mqtt->proc()){}
