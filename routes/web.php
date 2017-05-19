@@ -32,15 +32,12 @@ Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 Route::get('/broker', "ConnectionController@broker");
 Route::post('/broker/sendtomosquitto', "ConnectionController@sendToMosquitto");
 Route::get('/broker/sendtomosquitto', "ConnectionController@sendToMosquitto");
+Route::post('/broker/bindmosquitto', "ConnectionController@bindMosquitto");
+Route::get('/broker/bindmosquitto', "ConnectionController@bindMosquitto");
 
-<<<<<<< HEAD
 
 Route::get('/mapa', "MapaController@index");
 
 
 
-=======
-Route::get('/broker', "ConnectionController@broker");
-Route::post('/broker/bindmosquitto', "ConnectionController@bindMosquitto");
-Route::get('/broker/bindmosquitto', "ConnectionController@bindMosquitto");
->>>>>>> 412c9e84b4b5ab7529a172e807d9f1d7433e4048
+

@@ -28,7 +28,8 @@ class MapaController extends Controller
         $grid->verticalLineFrom(20, "street");
 
         $grid->setNodo(5, 5, Nodo::find(1));
-        $grid->setNodo(10, 5, Nodo::find(1));
+        $grid->setNodo(10, 5, Nodo::find(2));
+        $grid->setNodo(15, 10, Nodo::find(3));
         return view("mapa", compact("grid"));
     }
 }

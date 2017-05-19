@@ -55,4 +55,14 @@ class Box
     public function getDir(){
         return $this->directions;
     }
+
+
+    private function read_direction(){
+
+        $fp = fopen("/opt/lampp/htdocs/directions.txt", "r");   //solo funciona para xampp (y tampoco windows) habra que jugar con los paths
+        while(!feof($fp)){
+            $line = fgets($fp);
+        }
+        fclose($fp);
+    }
 }
