@@ -26,4 +26,25 @@ $(document).ready(function(){
             }
         });
     }
+
+    function bindMosquitto(){
+
+        $.ajax({
+            url: "/broker/bindmosquitto",
+            type: "POST",
+            success: function (result) {
+                swal({
+                    title: 'Bien Hecho!',
+                    text: 'Se ha suscrito al topico casa/importante.',
+                    type: "success",
+                    timer: 2000
+                }).then(
+                    function () {},
+                    // handling the promise rejection
+                    function (dismiss) {
+                    }
+                )
+            }
+        });
+    }
 });
