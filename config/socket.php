@@ -7,7 +7,7 @@ return array(
      * MUST match JS `new WebSocket('ws://$httpHost')`.
      */
 
-    'httpHost' => env('SOCKET_HTTP_HOST', '10.193.37.4'),
+    'httpHost' => env('SOCKET_HTTP_HOST', '127.0.0.1'),
 
     /*
      * Port to listen on. If 80, assuming production,
@@ -19,5 +19,5 @@ return array(
      * IP address to bind to. Default is localhost/proxy only.
      * `0.0.0.0` for any machine.
      */
-    'address' => env('SOCKET_ADDRESS', '10.193.37.4'),
+    'address' => env('SOCKET_ADDRESS', '127.0.0.1'),
 );

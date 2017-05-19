@@ -1,0 +1,20 @@
+.building{
+    background-color: #F8E6E0;
+}
+
+td{
+    width: 50px;
+}
+
+tr{
+    height: 40px;
+}
+
+td div {
+    height: 40px;
+}
+
+.street{
+    background-color: #D8D8D8;
+}
+

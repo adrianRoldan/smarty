@@ -38,7 +38,7 @@ class ServerSocket extends BaseSocketListener {
     }
 
     public function onError(ConnectionInterface $conn, \Exception $e) {
-        logger("ERROR en websocket front -> cloud: ".$e);
+        logger("ERROR en socket cloud -> front: ".$e);
         $conn->close();
     }
 

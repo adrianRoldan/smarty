@@ -1,6 +1,7 @@
 <?php
 
 use App\Dispositivo;
+use App\Nodo;
 use App\User;
 use Illuminate\Database\Seeder;
 
@@ -27,17 +28,16 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Dispositivo::create([
-            'ip' => '',
+            'ip' => '192.168.1.50',
             'mac' => '',
-            'puerto' => 10000,
+            'puerto' => config('app.mqtt_port'),
             'nombre' => "Gestor 1",
         ]);
 
-        Dispositivo::create([
-            'ip' => '',
-            'mac' => '',
-            'puerto' => 10000,
-            'nombre' => "Gestor 2",
+        Nodo::create([
+            'nombre' => "Semaforo 1",
+            'ip' => '192.168.1.50',
+            'client_mqtt_id' => "semaforo_1",
         ]);
     }
 }

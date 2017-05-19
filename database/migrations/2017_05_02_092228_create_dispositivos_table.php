@@ -20,7 +20,7 @@ class CreateDispositivosTable extends Migration
             $table->integer("puerto");
             $table->string('mac');
             $table->string('tipo')->default('');
-            $table->boolean("estado")->default(true);
+            $table->boolean("activo")->default(true);
             $table->timestamps();
         });
     }

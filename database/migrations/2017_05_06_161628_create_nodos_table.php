@@ -16,10 +16,11 @@ class CreateNodosTable extends Migration
         Schema::create('nodos', function (Blueprint $table) {
             $table->increments('id');
             $table->string("nombre");
-            $table->string("tipo");
+            $table->string("client_mqtt_id")->unique();
+            $table->string("tipo")->default("semaforo");
             $table->ipAddress("ip");
-            $table->integer("puerto");
-            $table->boolean("estado")->default(true);
+            $table->macAddress("mac")->default("");
+            $table->boolean("activo")->default(true);
             $table->timestamps();
         });
     }

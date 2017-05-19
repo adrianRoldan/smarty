@@ -34,6 +34,8 @@ namespace App\Components;
 */
 
 /* phpMQTT */
+use App\Http\Sockets\SuscriptorMqtt;
+
 class phpMQTT {
 
 	private $socket; 			/* holds the socket	*/
@@ -41,7 +43,7 @@ class phpMQTT {
 	public $keepalive = 10;		/* default keepalive timmer */
 	public $timesinceping;		/* host unix time, used to detect disconects */
 	public $topics = array(); 	/* used to store currently subscribed topics */
-	public $debug = false;		/* should output debug messages */
+	public $debug = true;		/* should output debug messages */
 	public $address;			/* broker address */
 	public $port;				/* broker port */
 	public $clientid;			/* client id sent to brocker */
@@ -178,6 +180,8 @@ class phpMQTT {
 
 	/* subscribe: subscribes to topics */
 	function subscribe($topics, $qos = 0){
+
+        set_time_limit(0);
 		$i = 0;
 		$buffer = "";
 		$id = $this->msgid;
@@ -264,24 +268,36 @@ class phpMQTT {
 
 	/* message: processes a recieved topic */
 	function message($msg){
-		 	$tlen = (ord($msg{0})<<8) + ord($msg{1});
-			$topic = substr($msg,2,$tlen);
-			$msg = substr($msg,($tlen+2));
-			$found = 0;
-			foreach($this->topics as $key=>$top){
-				if( preg_match("/^".str_replace("#",".*",
-						str_replace("+","[^\/]*",
-							str_replace("/","\/",
-								str_replace("$",'\$',
-									$key))))."$/",$topic) ){
-					if(is_callable($top['function'])){
-						call_user_func($top['function'],$topic,$msg);
-						$found = 1;
-					}
+
+		$tlen = (ord($msg{0})<<8) + ord($msg{1});
+		$topic = substr($msg,2,$tlen);
+		$msg = substr($msg,($tlen+2));
+		echo "Msg Recibido: ".date("r")." Topico: {$topic}. Mensaje: $msg\n";
+        logger("Msg Recibido: ".date("r")."\nTópico: {$topic}\nMensaje: $msg\n");
+
+        //$this->processTopic($topic);
+		$found = 0;
+
+		foreach($this->topics as $key=>$top){
+
+			if( preg_match("/^".str_replace("#",".*",
+					str_replace("+","[^\/]*",
+						str_replace("/","\/",
+							str_replace("$",'\$',
+								$key))))."$/",$topic) ){
+
+                $processTopic = new ProcessTopic();
+				if(method_exists(new ProcessTopic(), $top['function'])){
+					$function = $top['function'];
+                    $processTopic->$function($topic, $msg);
+					//call_user_func("$this::".$top['function'], $topic, $msg);
+					$found = 1;
 				}
 			}
+		}
 
-			if($this->debug && !$found) echo "msg recieved but no match in subscriptions\n";
+		if($this->debug && !$found)
+			logger("Mensaje recibido pero no hay suscripciones\n");
 	}
 
 	/* proc: the processing loop for an "allways on" client 

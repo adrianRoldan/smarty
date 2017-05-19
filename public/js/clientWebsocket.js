@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
 
-    var socket = new WebSocket("ws://10.193.37.4:10000/listencloud");
+    var socket = new WebSocket("ws://127.0.0.1:10000/listencloud");
 
     socket.onopen = function () {
         console.log("La conexión se ha establecido");
@@ -28,8 +28,6 @@ $(document).ready(function() {
                     <td>Obteniendo...</td>\
                 </tr>');
         });
-
-
     };
 
     socket.onerror = function (error) {

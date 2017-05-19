@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\CommunicationLog;
 use App\Components\phpMQTT;
+use App\Dispositivo;
 use App\Http\Sockets\ClientSocket;
+use App\Http\Sockets\SuscriptorMqtt;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
@@ -46,34 +48,18 @@ class ConnectionController extends Controller
 
     public function sendToMosquitto(){
 
-        $mqtt = new phpMQTT("192.168.1.49", 1883, "front-end"); //Change client name to something unique
+        //Busca en la base de datos el dispositivo con id 2. En este caso es el broker 1
+        $broker = Dispositivo::find(2);
+
+        // Instancia a la clase phpMQTT. Datos: ip del broker, puerto del protocolo mqtt y Id unico para el front-end
+        $mqtt = new phpMQTT($broker->ip, config('app.mqtt_port'), config("app.publisher_mqtt_id"));
         $mqtt->keepalive = 60;
 
-        if ($mqtt->connect()) {
-            $mqtt->publish("trafico/emergencia", "Hello World!!!!!!",0);
+        if ($mqtt->connect()) { // Prueba de conectar
+            $mqtt->publish("trafico/emergencia", "Hello World!!!!!!",0);    // Publica en el topico el mensaje
             $mqtt->close();
         }else{
-            logger("Error con la conexión con Mosquitto. Publicador");
+            logger("Error con la conexión con Mosquitto. Publicador");  // Registra en el archivo laravel.log en caso de error de conexión
         }
-    }
-
-
-    public function bindMosquitto(){
-
-        $mqtt = new phpMQTT("192.168.1.49", 1883, "front-end"); //Change client name to something unique
-        if(!$mqtt->connect()){
-            logger("Error con la conexión con Mosquitto. Suscriptor");
-            exit(1);
-        }
-        $topics['trafico/emergencia'] = array("qos"=>0, "function"=>"procmsg");
-        $mqtt->subscribe($topics,0);
-
-        while($mqtt->proc()){}
-
-        $mqtt->close();
-    }
-
-    function procmsg($topic, $msg){
-        logger( "Msg Recieved: ".date("r")."\nTopic:{$topic}\n$msg\n");
     }
 }

@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', "DashboardController@index")->name("/");
-Route::get('/dashboard', "DashboardController@index");
+Route::get('/', "MapaController@index")->name("/");
+Route::get('/dashboard', "MapaController@index");
 
 
 Route::get("/bindMosquitto", "ConnectionController@bindMosquitto");
@@ -32,4 +32,9 @@ Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 Route::get('/broker', "ConnectionController@broker");
 Route::post('/broker/sendtomosquitto', "ConnectionController@sendToMosquitto");
 Route::get('/broker/sendtomosquitto', "ConnectionController@sendToMosquitto");
+
+
+Route::get('/mapa', "MapaController@index");
+
+
 
