@@ -14,6 +14,23 @@ return [
 
     'name' => 'Smarty',
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Identificadores de cliente MQTT
+    |--------------------------------------------------------------------------
+    */
+    'publisher_mqtt_id' => "front-end-publisher",
+    'subcriptor_mqtt_id' => "front-end-subscriptor",
+
+    /*
+    |--------------------------------------------------------------------------
+    | Puerto por defecto MQTT
+    |--------------------------------------------------------------------------
+    */
+    'mqtt_port' => 1883,
+
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -64,7 +81,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Europe/Madrid',
 
     /*
     |--------------------------------------------------------------------------
@@ -177,6 +194,14 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+
+        /*
+         *  Components extra Laravel
+         */
+        Barryvdh\Debugbar\ServiceProvider::class,
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+        Orchid\Socket\Providers\SocketServiceProvider::class
     ],
 
     /*
@@ -226,6 +251,12 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        /*
+         * Alias componentes extra Laravel
+         */
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
     ],
 
 ];

@@ -1,5 +1,7 @@
 <?php
 
+use App\Dispositivo;
+use App\Nodo;
 use App\User;
 use Illuminate\Database\Seeder;
 
@@ -12,12 +14,30 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
-
         User::create([
             'name' => 'admin',
-            'email' => "adrian.roldan.90@gmail.com",
-            'password' => bcrypt("secreto")
+            'email' => 'admin@smarty.com',
+            'password' => bcrypt('123456')
+        ]);
+
+        Dispositivo::create([
+            'ip' => '',
+            'mac' => '',
+            'puerto' => 10000,
+            'nombre' => "Cloud",
+        ]);
+
+        Dispositivo::create([
+            'ip' => '192.168.1.50',
+            'mac' => '',
+            'puerto' => config('app.mqtt_port'),
+            'nombre' => "Gestor 1",
+        ]);
+
+        Nodo::create([
+            'nombre' => "Semaforo 1",
+            'ip' => '192.168.1.50',
+            'client_mqtt_id' => "semaforo_1",
         ]);
     }
 }

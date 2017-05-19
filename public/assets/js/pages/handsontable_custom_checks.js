@@ -162,7 +162,7 @@ $(function() {
                     return txt;
 
                 case 1:
-                    return '<strong>Model</strong>';
+                    return '<strong>Models</strong>';
 
                 case 2:
                     return '<i class="icon-calendar3 position-left"></i> Date';
@@ -376,7 +376,7 @@ $(function() {
     var hot_checks_values_init = new Handsontable(hot_checks_values, {
         data: hot_checks_values_data,
         stretchH: 'all',
-        colHeaders: ['Brand', 'Model', 'Year', 'Price', 'Available'],
+        colHeaders: ['Brand', 'Models', 'Year', 'Price', 'Available'],
         columns: [
             {
                 data: 'car'
@@ -429,7 +429,7 @@ $(function() {
     var hot_checks_labels_init = new Handsontable(hot_checks_labels, {
         data: hot_checks_labels_data,
         stretchH: 'all',
-        colHeaders: ['Brand', 'Model', 'Date', 'Price', 'Share'],
+        colHeaders: ['Brand', 'Models', 'Date', 'Price', 'Share'],
         columns: [
             {
                 data: 'car'
@@ -489,7 +489,7 @@ $(function() {
     var hot_checks_template_init = new Handsontable(hot_checks_template, {
         data: hot_checks_template_data,
         stretchH: 'all',
-        colHeaders: ['Brand', 'Model', 'Year', 'Price', 'Available'],
+        colHeaders: ['Brand', 'Models', 'Year', 'Price', 'Available'],
         columns: [
             {
                 data: 'car'

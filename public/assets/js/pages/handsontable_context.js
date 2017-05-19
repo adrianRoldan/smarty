@@ -42,7 +42,7 @@ $(function() {
         data: car_data,
         rowHeaders: true,
         stretchH: 'all',
-        colHeaders: ['Brand', 'Model', 'Date', 'Price', 'Market share'],
+        colHeaders: ['Brand', 'Models', 'Date', 'Price', 'Market share'],
         contextMenu: true,
         columns: [
             {
@@ -83,7 +83,7 @@ $(function() {
         data: car_data,
         rowHeaders: true,
         stretchH: 'all',
-        colHeaders: ['Brand', 'Model', 'Date', 'Price', 'Market share'],
+        colHeaders: ['Brand', 'Models', 'Date', 'Price', 'Market share'],
         contextMenu: ['row_above', 'row_below', 'remove_row'],
         columns: [
             {
@@ -124,7 +124,7 @@ $(function() {
         data: car_data,
         rowHeaders: true,
         stretchH: 'all',
-        colHeaders: ['Brand', 'Model', 'Date', 'Price', 'Market share'],
+        colHeaders: ['Brand', 'Models', 'Date', 'Price', 'Market share'],
         columns: [
             {
                 data: 'car'
@@ -200,7 +200,7 @@ $(function() {
         data: car_data,
         rowHeaders: true,
         stretchH: 'all',
-        colHeaders: ['Brand', 'Model', 'Date', 'Price', 'Market share'],
+        colHeaders: ['Brand', 'Models', 'Date', 'Price', 'Market share'],
         columns: [
             {
                 data: 'car'
