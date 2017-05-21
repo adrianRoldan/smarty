@@ -46,7 +46,7 @@ class ConnectionController extends Controller
         echo $response;
     }
 
-    public function sendToMosquitto(){
+    public function sendToBroker(Request $request){
 
         //Busca en la base de datos el dispositivo con id 2. En este caso es el broker 1
         $broker = Dispositivo::find(2);
@@ -56,10 +56,12 @@ class ConnectionController extends Controller
         $mqtt->keepalive = 60;
 
         if ($mqtt->connect()) { // Prueba de conectar
-            $mqtt->publish("trafico/emergencia", "Hello World!!!!!!",0);    // Publica en el topico el mensaje
+            $mqtt->publish($request->topico, $request->mensaje, 0);    // Publica en el topico el mensaje
             $mqtt->close();
+            echo 0;
         }else{
             logger("Error con la conexión con Mosquitto. Publicador");  // Registra en el archivo laravel.log en caso de error de conexión
+            echo 1;
         }
     }
 }
