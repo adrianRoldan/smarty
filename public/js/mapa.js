@@ -40,7 +40,8 @@ mqtt = {
 
         console.log("onConnect");   // Registro de conexion
         // Sucripción a topicos
-        client.subscribe("trafico/emergencia");
+        //client.subscribe("trafico/emergencia");
+        //client.subscribe("trafico/ambulancia");
         client.subscribe("trafico/ambulancia");
         client.subscribe("trafico/semaforo");
     },
@@ -75,7 +76,7 @@ mqtt = {
                 break;
             case "trafico/ambulancia":
                 // Muestra la ambulancia en el mapa a partir de su ubicacion
-                $('#'+msg['ubicacion']).css("background-color", "black");
+                $('#'+msg['ubicacion_x']+"_"+msg['ubicacion_y']).css("background-color", "black");
                 break;
             case "trafico/semaforo":
                 // Cambia de estado en el front del semaforo que ha enviado su estado

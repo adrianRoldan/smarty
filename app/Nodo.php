@@ -17,7 +17,7 @@ class Nodo extends Model
 
 
     public function html(){
-        return "<div data-id='".$this->client_mqtt_id."' class='nodo'><div style='background-color: green' id='".$this->client_mqtt_id."'>
+        return "<div data-id='".$this->id."' class='nodo'><div style='background-color: green' id='".$this->client_mqtt_id."'>
         </div></div>";
     }
 }
