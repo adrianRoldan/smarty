@@ -1,12 +1,4 @@
-
 <?php
-
-/**
- *  UTILIZACION: en la raiz del proyecto ejecutar $ php artisan mqtt:subscribe
- *
- * Se suscribe a los topicos definidos en el array $topics. Cuando recibe un mensaje,
- * procesa el topico y segun este, ejecuta una funcion u otra (clase ProcessTopic)
- */
 
 namespace App\Console\Commands;
 

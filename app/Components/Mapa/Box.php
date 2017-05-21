@@ -11,13 +11,15 @@ namespace App\Components\Mapa;
 
 class Box
 {
-    public $coordinates;
-    public $type;
-    public $directions;
-    public $nodo;
-    public $html;
+    public $coordinates;	/* es la posición de la casilla en el mapa [latitud, longitud]  */
+    public $type;		/* esto indica qué tipo de elemento es la casilla: building, street, park, hospital, semaphore */
+    public $directions;		/* tiempo a la siguiente casilla hacia el [norte, sur, este, oeste]; donde -1 indica No-circulable/fuera delmap/sentido incorrecto */
+    public $sense;		/* sentido de circulación de la calle o null si no es una zona circulable */
+    public $nodo;		/* dispositivo/elemento de la ciudad */
+    public $html;		/* contenido/formato que mostrará la casilla en el front */
 
 
+    /* Constructora */ 
     function __construct($lat, $long, $type){
 
         $this->coordinates = [$lat, $long];
@@ -28,7 +30,7 @@ class Box
                            class='$this->type'><br /></td>";
     }
 
-
+    /* Especificar el dispositivo y sus propiedades html */
     public function setNodo($nodo){
 
         $this->nodo = $nodo;
@@ -38,7 +40,7 @@ class Box
                        ."</td>";
     }
 
-
+    /* Especificar las propiedades html */
     public function setHtml($type){
 
         $this->html = "<td title='(".$this->coordinates[0].",".$this->coordinates[1].")' 
@@ -46,28 +48,39 @@ class Box
                             class='$type'><br /></td>";
     }
 
+    /* Especificar el sentido de circulación */
+    public function setSense($sense){
+	$this->sense = $sense;
+    }
 
+    /* Consultar el sentido de circulación */
+    public function getSense(){
+    	return $this->sense;
+    }
+
+    /* Especificar el tipo de casilla */
+    public function setType($type){
+        $this->type = $type;
+    }
+
+    /* Consultar el tipo de casilla */
     public function getType(){
         return $this->type;
     }
 
-
+    /* Consultar las coordenadas */
     public function getCoord(){
         return $this->coordinates;
     }
 
-
+    /* Especificar las distancias a las 4 casillas vecinas */
+    public function setDir($directions){
+        $this->directions = $directions;
+    }
+    
+    /* Consultar las distancias a las 4 casillas vecinas */
     public function getDir(){
         return $this->directions;
     }
 
-
-    private function read_direction(){
-
-        $fp = fopen("/opt/lampp/htdocs/directions.txt", "r");   //solo funciona para xampp (y tampoco windows) habra que jugar con los paths
-        while(!feof($fp)){
-            $line = fgets($fp);
-        }
-        fclose($fp);
-    }
 }
