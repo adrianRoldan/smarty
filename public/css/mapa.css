@@ -18,3 +18,19 @@ td div {
     background-color: #D8D8D8;
 }
 
+div.nodo{
+    cursor: pointer;
+}
+
+
+
+.bootstrap-select.btn-group .dropdown-menu > li > a.special-class-green {
+    color: #fff;
+    background-color: #4CAF50;
+}
+
+.bootstrap-select.btn-group .dropdown-menu > li > a.special-class-emergency {
+    color: #fff;
+    background-color: #2196F3;
+}
+

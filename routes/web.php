@@ -24,13 +24,14 @@ Route::post('/cloud/sendtocloud', "ConnectionController@sendToCloud");
 Route::get('/cloud/sendtocloud', "ConnectionController@sendToCloud");
 
 Route::get('/dispositivo/get/{dispositivo}', "DispositivoController@get");
+Route::get('/nodo/get/{id}', "NodoController@get");
 
 Auth::routes();
 
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
 Route::get('/broker', "ConnectionController@broker");
-Route::post('/broker/sendtomosquitto', "ConnectionController@sendToMosquitto");
+Route::post('/broker/send', "ConnectionController@sendToBroker");
 Route::get('/broker/sendtomosquitto', "ConnectionController@sendToMosquitto");
 Route::post('/broker/bindmosquitto', "ConnectionController@bindMosquitto");
 Route::get('/broker/bindmosquitto', "ConnectionController@bindMosquitto");

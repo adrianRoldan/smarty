@@ -13,8 +13,7 @@ class NodoController extends Controller
     }
 
     public function get(Request $request){
-
-        logger($request->dispositivo);
+        logger($request->id);
         return Nodo::find($request->id);
     }
 }

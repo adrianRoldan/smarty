@@ -25,22 +25,27 @@ class Box
         $this->coordinates = [$lat, $long];
         $this->type = $type;
         $this->nodo = null;
-        $this->html = "<td class='$this->type'><br /></td>";
+        $this->html = "<td title='(".$this->coordinates[0].",".$this->coordinates[1].")' 
+                           id='".$this->coordinates[0]."_".$this->coordinates[1]."'
+                           class='$this->type'><br /></td>";
     }
 
     /* Especificar el dispositivo y sus propiedades html */
     public function setNodo($nodo){
 
         $this->nodo = $nodo;
-        $this->html = "<td title='(".$this->coordinates[0].",".$this->coordinates[1].")' class='nodo'>
-                            <div style='background-color: green' id='".$nodo->client_mqtt_id."'></div>
-                       </td>";
+        $this->html = "<td title='(".$this->coordinates[0].",".$this->coordinates[1].")' 
+                            id='".$this->coordinates[0]."_".$this->coordinates[1]."'>".
+                            $nodo->html()
+                       ."</td>";
     }
 
     /* Especificar las propiedades html */
     public function setHtml($type){
 
-        $this->html = "<td title='(".$this->coordinates[0].",".$this->coordinates[1].")' class='$type'><br /></td>";
+        $this->html = "<td title='(".$this->coordinates[0].",".$this->coordinates[1].")' 
+                            id='".$this->coordinates[0]."_".$this->coordinates[1]."'
+                            class='$type'><br /></td>";
     }
 
     /* Especificar el sentido de circulación */

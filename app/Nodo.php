@@ -14,4 +14,10 @@ class Nodo extends Model
     protected $fillable = [
         'nombre', 'client_mqtt_id', 'tipo', 'ip', 'activo'
     ];
+
+
+    public function html(){
+        return "<div data-id='".$this->client_mqtt_id."' class='nodo'><div style='background-color: green' id='".$this->client_mqtt_id."'>
+        </div></div>";
+    }
 }

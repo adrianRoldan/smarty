@@ -41,8 +41,8 @@ mqtt = {
         console.log("onConnect");   // Registro de conexion
         // Sucripción a topicos
         client.subscribe("trafico/emergencia");
-        client.subscribe("trafico/state");
-
+        client.subscribe("trafico/ambulancia");
+        client.subscribe("trafico/semaforo");
     },
 
 
@@ -73,9 +73,13 @@ mqtt = {
             case "trafico/emergencia":
                 //Accion ha realizar en la vista de la aplicacion (mapa)
                 break;
-            case "trafico/state":
+            case "trafico/ambulancia":
+                // Muestra la ambulancia en el mapa a partir de su ubicacion
+                $('#'+msg['ubicacion']).css("background-color", "black");
+                break;
+            case "trafico/semaforo":
                 // Cambia de estado en el front del semaforo que ha enviado su estado
-                $('#'+msg['id']).css("background-color", msg['state']);
+                $('#'+msg['id']).css("background-color", msg['estado']);
                 break;
             default:
                 alert("Tópico no registrado");
@@ -103,11 +107,44 @@ cambio_estado = {
 
     init : function(){
 
-        $(".nodo").on("click", function(){
+        /*$(".nodo").on("click", function(){
             // Obtenemos identificador unico del nodo
             idNodo = $(this).id();
             // Enviamos mensaje de cambio de estado
             cambio_estado.enviarSos();
+        });*/
+
+        var idNodo;
+        $('.nodo').on("click", function(){
+            // Obtenemos identificador unico del nodo
+            idNodo = $(this).data("id");
+            ubicacion = $(this).parent().attr("id");
+            // Obtenemos objeto nodo
+            $.get("/nodo/get/"+idNodo, function(nodo) {
+                $('#modalEstado').find(".modal-title").text(nodo.nombre + " (" + nodo.client_mqtt_id + ")");
+                $('#modalEstado').find(".ip").text(nodo.ip);
+                $('#modalEstado').find(".mac").text(nodo.mac);
+                $('#modalEstado').find(".ubicacion").text(ubicacion);
+                $('#modalEstado').find(".nombre").text(nodo.nombre);
+                $('#modalEstado').modal();  // Abre modal
+            });
+        });
+
+
+        $('#save').click(function(){
+
+            nuevoEstado = $('#estado').val();
+
+            if(nuevoEstado != ""){
+                $.ajax({
+                    url: "/broker/send",
+                    type: "POST",
+                    data: {"topico": "trafico/semaforos", "mensaje" : idNodo+nuevoEstado},
+                    success: function (result) {
+                    }
+                });
+            }
+            $('#modalEstado').modal('toggle');
         });
     },
 
@@ -117,7 +154,7 @@ cambio_estado = {
         // Creamos instancia al objeto Messaje con el mensaje
         message = new Paho.MQTT.Message("sos");
         // ublicamos en el topico que corresponda
-        message.destinationName = "trafico/change_state";
+        message.destinationName = "trafico/semaforos";
         // enviamos el mensaje al topico
         client.send(message);
     }

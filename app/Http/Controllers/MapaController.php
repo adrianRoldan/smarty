@@ -15,6 +15,9 @@ class MapaController extends Controller     // MapaController es una subclase de
 
     public function index(){
 
+        /*$nodo = Nodo::find(1);
+        dd($nodo->html());*/
+
         $grid = new Grid(16, 21);
         $grid->horizontalLineFrom(0, "street");     // Formatamos las calles horizontales
         $grid->horizontalLineFrom(5, "street");
