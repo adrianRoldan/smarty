@@ -27,7 +27,7 @@ class Box
         $this->nodo = null;
         $this->html = "<td title='(".$this->coordinates[0].",".$this->coordinates[1].")' 
                            id='".$this->coordinates[0]."_".$this->coordinates[1]."'
-                           class='$this->type'><br /></td>";
+                           class='$this->type box'><br /></td>";
     }
 
     /* Especificar el dispositivo y sus propiedades html */
@@ -40,12 +40,12 @@ class Box
                        ."</td>";
     }
 
-    /* Especificar las propiedades html */
+    /* Añadimos tipo de celda (edificion, calle, parque...) */
     public function setHtml($type){
 
         $this->html = "<td title='(".$this->coordinates[0].",".$this->coordinates[1].")' 
                             id='".$this->coordinates[0]."_".$this->coordinates[1]."'
-                            class='$type'><br /></td>";
+                            class='$type box'><br /></td>";
     }
 
     /* Especificar el sentido de circulación */

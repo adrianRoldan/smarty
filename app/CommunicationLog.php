@@ -8,10 +8,15 @@ class CommunicationLog extends Model
 {
     protected $table = "communicationlogs";
     protected $fillable = [
-        'dispositivo_id', 'mensaje', 'fechaEnvio',
+        'logueable_id', 'logueable_type', 'mensaje', 'topico', 'fechaEnvio',
     ];
 
-    public function dispositivo(){
+    /*public function dispositivo(){
         return $this->belongsTo('App\Dispositivo');
+    }*/
+
+    public function logueable()
+    {
+        return $this->morphTo();
     }
 }

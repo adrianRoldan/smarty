@@ -47,7 +47,10 @@ class Mqtt extends Command
         $suscriptorMqtt->conectar();
 
         // Array que guarda los topicos para suscribirse y las funciones a ejecutar en cada topico despues de recibir un mensaje
-        $topics['trafico/emergencia'] = array("qos"=>0, "function"=>"trafico");
+        $topics['trafico/semaforo'] = array("qos"=>0, "function"=>"semaforo");
+        $topics['trafico/ambulancia'] = array("qos"=>0, "function"=>"ambulancia");
+        $topics['emergency/alerts'] = array("qos"=>0, "function"=>"app");
+
         //$topics['emergencia'] = array("qos"=>0, "function"=>"emergencia");
 
         // Se suscribe a los topicos y se pone a la escucha

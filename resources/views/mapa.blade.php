@@ -1,10 +1,12 @@
-@extends('layout.layout')   <!-- en el código html principal carpeta > layout > archivo layout -->
-
-@section('title')           <!-- añadimos título a esta vista -->
+<!-- en el código html principal carpeta > layout > archivo layout -->
+@extends('layout.layout')
+<!-- añadimos título a esta vista -->
+@section('title')
     Mapa de la ciudad
 @endsection
 
-@section('content')         <!-- esta parte substituiría a la sección @yield('content') del fichero mencionado arriba -->
+<!-- esta parte substituiría a la sección @yield('content') del fichero mencionado arriba -->
+@section('content')
 
     <div class="content">   <!-- nos permite formatar como un bloque (clase content) separado del resto (ej: recuadro relleno de negro bajo el texto) -->
 

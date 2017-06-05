@@ -48,6 +48,7 @@ class ConnectionController extends Controller
 
     public function sendToBroker(Request $request){
 
+        logger($request->topico. " ".$request->mensaje);
         //Busca en la base de datos el dispositivo con id 2. En este caso es el broker 1
         $broker = Dispositivo::find(2);
 
@@ -63,5 +64,12 @@ class ConnectionController extends Controller
             logger("Error con la conexión con Mosquitto. Publicador");  // Registra en el archivo laravel.log en caso de error de conexión
             echo 1;
         }
+    }
+
+
+    public function logs(){
+
+        $logs = CommunicationLog::orderBy("created_at", "desc")->orderBy("fechaEnvio", "desc")->get();
+        return view("logs", compact("logs"));
     }
 }

@@ -18,7 +18,6 @@ Route::get('/dashboard', "MapaController@index");
 Route::get("/bindMosquitto", "ConnectionController@bindMosquitto");
 
 
-
 Route::get('/cloud', "ConnectionController@cloud");
 Route::post('/cloud/sendtocloud', "ConnectionController@sendToCloud");
 Route::get('/cloud/sendtocloud', "ConnectionController@sendToCloud");
@@ -28,7 +27,7 @@ Route::get('/nodo/get/{id}', "NodoController@get");
 
 Auth::routes();
 
-Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+Route::get('logger', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
 Route::get('/broker', "ConnectionController@broker");
 Route::post('/broker/send', "ConnectionController@sendToBroker");
@@ -38,6 +37,8 @@ Route::get('/broker/bindmosquitto', "ConnectionController@bindMosquitto");
 
 
 Route::get('/mapa', "MapaController@index");
+
+Route::get('/logs', "ConnectionController@logs");
 
 
 

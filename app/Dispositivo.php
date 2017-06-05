@@ -9,10 +9,11 @@ class Dispositivo extends Model
 
     protected $table = "dispositivos";
     protected $fillable = [
-        'name', 'email', 'password',
+        'ip', 'mac', 'puerto', 'nombre'
     ];
 
-    public function communicationLogs(){
-        return $this->hasMany('App\CommunicationLog');
+    public function communicationLogs()
+    {
+        return $this->morphMany('App\CommunicationLog', 'logueable');
     }
 }

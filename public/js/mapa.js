@@ -12,6 +12,7 @@ $(document).ready(function() {
  * @type {{init: mqtt.init, onConnect: mqtt.onConnect, onMessageArrived: mqtt.onMessageArrived,
  * processTopic: mqtt.processTopic, onConnectionLost: mqtt.onConnectionLost}}
  */
+var izquierda = false;
 var client; //variable global que mantiene una unica conexión con el broker (tanto para suscribirse como para publicar)
 mqtt = {
 
@@ -66,8 +67,11 @@ mqtt = {
      * @param topic
      * @param msg
      */
+
     processTopic : function(topic, msg){
 
+
+        nopint = false;
         // Parseamos datos json recibidos
         msg = JSON.parse(msg);
         switch(topic){
@@ -75,8 +79,13 @@ mqtt = {
                 //Accion ha realizar en la vista de la aplicacion (mapa)
                 break;
             case "trafico/ambulancia":
-                // Muestra la ambulancia en el mapa a partir de su ubicacion
-                $('#'+msg['ubicacion_x']+"_"+msg['ubicacion_y']).css("background-color", "black");
+                // Elimina rastro de movimiento de la ambulancia
+                $('.street').html("").css("background-color", "#D8D8D8");
+                if($('#'+msg['ubicacion_x']+"_"+msg['ubicacion_y']).html() == "")
+                    // Muestra la ambulancia en el mapa a partir de su ubicacion
+                    $('#'+msg['ubicacion_x']+"_"+msg['ubicacion_y']).html("<img class='ambulancia' src='css/ambulancia.png' />");
+
+
                 break;
             case "trafico/semaforo":
                 // Cambia de estado en el front del semaforo que ha enviado su estado

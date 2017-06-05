@@ -16,11 +16,10 @@ class CreateCommunicationlogsTable extends Migration
         Schema::create('communicationlogs', function (Blueprint $table) {
 
             $table->increments('id');
-            $table->integer('dispositivo_id')->unsigned()->index()->nullable();
-            $table->foreign('dispositivo_id')
-                ->references('id')->on('dispositivos')
-                ->onDelete('restrict')->onUpdate('cascade');
+            $table->integer('logueable_id')->unsigned()->index()->nullable();
+            $table->string("logueable_type");
             $table->string("mensaje");
+            $table->string("topico");
             $table->dateTime("fechaEnvio")->nullable();
             $table->timestamps();
         });

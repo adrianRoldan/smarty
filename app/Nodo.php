@@ -16,6 +16,12 @@ class Nodo extends Model
     ];
 
 
+    public function communicationLogs()
+    {
+        return $this->morphMany('App\CommunicationLog', 'logueable');
+    }
+
+
     public function html(){
         return "<div data-id='".$this->id."' class='nodo'><div style='background-color: green' id='".$this->client_mqtt_id."'>
         </div></div>";

@@ -18,6 +18,21 @@ td div {
     background-color: #D8D8D8;
 }
 
+.hospital{
+    background: #D8D8D8 url(hospital.png) no-repeat 5px top;
+    background-size: 40px;
+}
+
+.accidente{
+    background: #F8E6E0 url(accidente.png) no-repeat 5px top;
+    background-size: 40px;
+}
+
+img.ambulancia{
+    height: 30px;
+    margin-left: 10px;
+}
+
 div.nodo{
     cursor: pointer;
 }
