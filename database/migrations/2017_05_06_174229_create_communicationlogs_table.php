@@ -18,7 +18,7 @@ class CreateCommunicationlogsTable extends Migration
             $table->increments('id');
             $table->integer('logueable_id')->unsigned()->index()->nullable();
             $table->string("logueable_type");
-            $table->string("mensaje");
+            $table->text("mensaje");
             $table->string("topico");
             $table->dateTime("fechaEnvio")->nullable();
             $table->timestamps();

@@ -64,7 +64,7 @@
 @section('scripts')         <!-- enlace a la librería javascript de mqtt (comunicación) -->
     @parent                 <!-- en el fichero de arriba, @yield('scripts') se substituiría por esto que sigue -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
+    {!! Html::script("js/paho.javascript-1.0.2/mqttws31.js") !!}
     {!! Html::script("assets/js/plugins/forms/selects/bootstrap_select.min.js") !!}
     {!! Html::script("assets/js/pages/form_bootstrap_select.js") !!}
     {!! Html::script("js/mapa.js") !!}

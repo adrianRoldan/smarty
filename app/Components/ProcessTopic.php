@@ -42,6 +42,7 @@ class ProcessTopic
             "fechaEnvio" => date("Y-m-d")]);
         $log->save();
 
+        // To Cloud
         $socket = new ClientSocket("192.168.43.80", 10000);
         $socket->send_data($msg);
         $response = $socket->read_data();

@@ -12,7 +12,7 @@ class Nodo extends Model
 
     // Atributos con los cuales se puede crear un objeto nodo
     protected $fillable = [
-        'nombre', 'client_mqtt_id', 'tipo', 'ip', 'activo'
+        'nombre', 'client_mqtt_id', 'ubicacion_x', 'ubicacion_y', 'tipo', 'ip', 'activo'
     ];
 
 

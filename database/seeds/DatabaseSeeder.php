@@ -34,36 +34,7 @@ class DatabaseSeeder extends Seeder
             'nombre' => "Gestor 1",
         ]);
 
-        Nodo::create([
-            'nombre' => "Semaforo 1",
-            'ip' => '192.168.1.50',
-            'client_mqtt_id' => "semaforo_1",
-        ]);
 
-        Nodo::create([
-            'nombre' => "Semaforo 2",
-            'ip' => '192.168.1.51',
-            'client_mqtt_id' => "semaforo_2",
-        ]);
-        
-        Nodo::create([
-            'nombre' => "Semaforo 2",
-            'ip' => '192.168.1.52',
-            'client_mqtt_id' => "semaforo_3",
-        ]);
-
-        Nodo::create([
-            'nombre' => "Ambulancia",
-            'ip' => '192.168.1.53',
-            'client_mqtt_id' => "ambulancia",
-            'tipo' => "ambulancia",
-        ]);
-
-        Nodo::create([
-            'nombre' => "Dispositivo Móvil",
-            'ip' => '192.168.1.54',
-            'client_mqtt_id' => "movil",
-            'tipo' => "movil",
-        ]);
+        $this->call(NodoSeeder::class);
     }
 }

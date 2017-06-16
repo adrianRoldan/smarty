@@ -19,7 +19,7 @@ mqtt = {
     init: function () {
 
         // Crea una instancia de cliente WEBSOCKET con la Ip del broker, el puerto del protocolo websocket (dentro de mqtt) y ID unico
-        client = new Paho.MQTT.Client("192.168.43.54", 1884, "front-end-logs");
+        client = new Paho.MQTT.Client("192.168.1.50", 1884, "front-end-logs");
 
         // define allback handlers. Funciones que se ejecutaran en los eventos de perdidad de conexion y mensaje recibido
         client.onConnectionLost = mqtt.onConnectionLost;
@@ -42,6 +42,8 @@ mqtt = {
         //client.subscribe("trafico/ambulancia");
         client.subscribe("trafico/ambulancia");
         client.subscribe("trafico/semaforo");
+        client.subscribe("emergency/alerts");
+
     },
 
 
@@ -54,18 +56,28 @@ mqtt = {
 
         console.log(message.destinationName+": "+message.payloadString);
         // Procesa el topico
-        procedencia = mqtt.processTopic(message.destinationName, message.payloadString);
+        procedencia = mqtt.getprocedencia(message.destinationName, message.payloadString);
         data = JSON.parse(message.payloadString);
 
-        $('#mqttlogs').prepend('<tr class="text-left">\
-                <td>'+procedencia+'</td>\
-                <td>'+message.destinationName+'</td>\
-                \<td>'+message.payloadString+'</td>\
-                <td></td>\
-                <td>Obteniendo...</td>\
-            </tr>');
+        var registro = $('<tr/>', {
+            'class' : 'text-left'
+        }).append([
+            $('<td/>', {
+                'text': procedencia
+            }),
+            $('<td/>', {
+                'text': message.destinationName
+            }),
+            $('<td/>', {
+                'text': message.payloadString
+            }),
+            $('<td/>'),
+            $('<td/>'),
+        ]);
 
-        console.log(message.destinationName+": "+message.payloadString);
+
+        $('#mqttlogs').prepend(registro);//.find(':first').effect('highlight', {"color" : "gray"}, 2000);
+        $('#mqttlogs').find("tr:first").animate({"background-color" : "yellow"}, 0).delay(50).animate({"background-color" : "transparent"}, 1500);
     },
 
 
@@ -76,7 +88,7 @@ mqtt = {
      * @param msg
      */
 
-    processTopic : function(topic, msg){
+    getprocedencia : function(topic, msg){
 
         var procedencia;
         // Parseamos datos json recibidos

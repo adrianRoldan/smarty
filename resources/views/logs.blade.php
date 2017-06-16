@@ -46,7 +46,7 @@
 @section('scripts')
     @parent
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
+    {!! Html::script("js/paho.javascript-1.0.2/mqttws31.js") !!}
     {!! Html::script("js/logs.js") !!}
 
 @endsection
