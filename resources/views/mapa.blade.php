@@ -45,7 +45,7 @@
                             <option value=""></option>
                             <option value="green" class="special-class-green">Verde</option>
                             <option value="red" class="special-class">Rojo</option>
-                            <option value="emgcy" class="special-class-emergency">Emergencia</option>
+                            <option value="blue" class="special-class-emergency">Emergencia</option>
                         </select>
                     </div>
 

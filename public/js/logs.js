@@ -19,14 +19,24 @@ mqtt = {
     init: function () {
 
         // Crea una instancia de cliente WEBSOCKET con la Ip del broker, el puerto del protocolo websocket (dentro de mqtt) y ID unico
-        client = new Paho.MQTT.Client("192.168.1.50", 1884, "front-end-logs");
+        client = new Paho.MQTT.Client("", 1884, "front-end-logs");
 
         // define allback handlers. Funciones que se ejecutaran en los eventos de perdidad de conexion y mensaje recibido
         client.onConnectionLost = mqtt.onConnectionLost;
         client.onMessageArrived = mqtt.onMessageArrived;
 
         // Conecta con el broker
-        client.connect({onSuccess:mqtt.onConnect});
+        try {
+            client.connect({
+                onSuccess : mqtt.onConnect,
+                onFailure : mqtt.onFailure,
+                hosts : ["192.168.60.234", "192.168.1.56"],
+                ports : [1884, 1884]
+            });
+        }
+        catch(err) {
+            console.log("Error de conexion al broker "+err);
+        }
     },
 
 
@@ -44,6 +54,16 @@ mqtt = {
         client.subscribe("trafico/semaforo");
         client.subscribe("emergency/alerts");
 
+    },
+
+
+
+    /**
+     * Evento que se lanza al fallar la conexion con el broker
+     */
+    onFailure : function(errorMessage){
+        console.log("Broker no encontrado. "+errorMessage);
+        mqtt.init();
     },
 
 
@@ -122,6 +142,8 @@ mqtt = {
 
         if (responseObject.errorCode !== 0) {
             console.log("onConnectionLost:" + responseObject.errorMessage);
+            mqtt.init();
         }
+
     }
 };

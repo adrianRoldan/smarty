@@ -30,6 +30,9 @@ class MapaController extends Controller     // MapaController es una subclase de
         $grid->verticalLineFrom(15, "street");
         $grid->verticalLineFrom(20, "street");
 
+        $grid->setBox(5, 0, "hospital");
+        $grid->setBox(1, 15, "accidente");
+
         //Creamos los semaforos en el mapa
         $semaforos = Nodo::where('tipo', 'semaforo')->get();
         foreach($semaforos as $semaforo){

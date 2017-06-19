@@ -36,10 +36,10 @@ class ConnectionController extends Controller
     }
 
 
-    public function sendToCloud(Request $request){
+    public static function sendToCloud($msg){
 
         $socket = new ClientSocket(Config::get("adresses.cloud.ip"), Config::get("adresses.cloud.port"));
-        $socket->send_data('Hola cloud, soy el front-end');
+        $socket->send_data($msg);
         $response = $socket->read_data();
         $socket->close_socket();
 
@@ -69,7 +69,10 @@ class ConnectionController extends Controller
 
     public function logs(){
 
-        $logs = CommunicationLog::orderBy("created_at", "desc")->orderBy("fechaEnvio", "desc")->get();
+        $logs = CommunicationLog::orderBy("created_at", "desc")
+            ->orderBy("fechaEnvio", "desc")
+            ->get();
+
         return view("logs", compact("logs"));
     }
 }

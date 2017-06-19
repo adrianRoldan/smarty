@@ -21,17 +21,31 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Dispositivo::create([
-            'ip' => '',
+            'ip' => '192.168.43.80',
             'mac' => '',
             'puerto' => 10000,
             'nombre' => "Cloud",
         ]);
 
         Dispositivo::create([
-            'ip' => '192.168.1.50',
+            'ip' => '192.168.61.43',
             'mac' => '',
             'puerto' => config('app.mqtt_port'),
-            'nombre' => "Gestor 1",
+            'nombre' => "Broker Master",
+        ]);
+
+        Dispositivo::create([
+            'ip' => '192.168.1.56',
+            'mac' => '',
+            'puerto' => config('app.mqtt_port'),
+            'nombre' => "Broker 1",
+        ]);
+
+        Dispositivo::create([
+            'ip' => '192.168.60.234',
+            'mac' => '',
+            'puerto' => config('app.mqtt_port'),
+            'nombre' => "Broker 2",
         ]);
 
 

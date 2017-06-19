@@ -12,7 +12,7 @@ $(document).ready(function() {
  * @type {{init: mqtt.init, onConnect: mqtt.onConnect, onMessageArrived: mqtt.onMessageArrived,
  * processTopic: mqtt.processTopic, onConnectionLost: mqtt.onConnectionLost}}
  */
-var izquierda = false;
+
 var client; //variable global que mantiene una unica conexión con el broker (tanto para suscribirse como para publicar)
 mqtt = {
 
@@ -22,14 +22,25 @@ mqtt = {
     init: function () {
 
         // Crea una instancia de cliente WEBSOCKET con la Ip del broker, el puerto del protocolo websocket (dentro de mqtt) y ID unico
-        client = new Paho.MQTT.Client("192.168.1.50", 1884, "front-end-mapa");
+        client = new Paho.MQTT.Client("", 1884, "front-end-mapa");
 
         // define allback handlers. Funciones que se ejecutaran en los eventos de perdidad de conexion y mensaje recibido
         client.onConnectionLost = mqtt.onConnectionLost;
         client.onMessageArrived = mqtt.onMessageArrived;
 
         // Conecta con el broker
-        client.connect({onSuccess:mqtt.onConnect});
+        try {
+            client.connect({
+                onSuccess : mqtt.onConnect,
+                onFailure : mqtt.onFailure,
+                hosts : ["192.168.61.43", "192.168.61.43"],
+                ports : [1884, 1884]
+            });
+        }
+        catch(err) {
+            console.log("Error de conexion al broker "+err);
+        }
+
     },
 
 
@@ -39,12 +50,23 @@ mqtt = {
      */
     onConnect : function() {
 
-        console.log("onConnect");   // Registro de conexion
+        console.log("Conetado al broker");   // Registro de conexion
         // Sucripción a topicos
         //client.subscribe("trafico/emergencia");
         //client.subscribe("trafico/ambulancia");
         client.subscribe("trafico/ambulancia");
-        client.subscribe("trafico/semaforo");
+        client.subscribe("trafico/estado");
+        client.subscribe("emergency/alerts");
+    },
+
+
+
+    /**
+     * Evento que se lanza al fallar la conexion con el broker
+     */
+    onFailure : function(errorMessage){
+        console.log("Broker no encontrado. "+errorMessage);
+        mqtt.init();
     },
 
 
@@ -75,7 +97,7 @@ mqtt = {
         // Parseamos datos json recibidos
         msg = JSON.parse(msg);
         switch(topic){
-            case "trafico/emergencia":
+            case "emergency/alerts":
                 //Accion ha realizar en la vista de la aplicacion (mapa)
                 break;
             case "trafico/ambulancia":
@@ -87,7 +109,7 @@ mqtt = {
 
 
                 break;
-            case "trafico/semaforo":
+            case "trafico/estado":
                 // Cambia de estado en el front del semaforo que ha enviado su estado
                 $('#'+msg['id']).css("background-color", msg['estado']);
                 break;
@@ -106,6 +128,7 @@ mqtt = {
 
         if (responseObject.errorCode !== 0) {
             console.log("onConnectionLost:" + responseObject.errorMessage);
+            mqtt.init();
         }
     }
 };
@@ -117,17 +140,12 @@ cambio_estado = {
 
     init : function(){
 
-        /*$(".nodo").on("click", function(){
-            // Obtenemos identificador unico del nodo
-            idNodo = $(this).id();
-            // Enviamos mensaje de cambio de estado
-            cambio_estado.enviarSos();
-        });*/
-
         var idNodo;
+        var idSem;
         $('.nodo').on("click", function(){
             // Obtenemos identificador unico del nodo
             idNodo = $(this).data("id");
+            idSem = $(this).data("idSem");
             ubicacion = $(this).parent().attr("id");
             // Obtenemos objeto nodo
             $.get("/nodo/get/"+idNodo, function(nodo) {
@@ -143,13 +161,27 @@ cambio_estado = {
 
         $('#save').click(function(){
 
+            idSem =
             nuevoEstado = $('#estado').val();
 
             if(nuevoEstado != ""){
+
+                data = JSON.stringify({
+                    "id" : "semaforo_105",
+                    "estado" : nuevoEstado
+                });
+
                 $.ajax({
                     url: "/broker/send",
                     type: "POST",
-                    data: {"topico": "trafico/semaforos", "mensaje" : idNodo+nuevoEstado},
+                    data: {
+                        "topico": "frontend",
+                        "mensaje" : JSON.stringify({
+                                        "id" : "semaforo_105",
+                                        "estado" : nuevoEstado,
+                                        "topico" : "trafico/cambia_estado"
+                                    })
+                    },
                     success: function (result) {
                     }
                 });
